@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp11.encapsulation
+namespace ConsoleApp11.ControlPoint.encapsulation
 {
     internal class BorderGuard
     {
