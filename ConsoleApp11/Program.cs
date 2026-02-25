@@ -1,7 +1,10 @@
 ﻿using ConsoleApp11.ControlPoint.ControllPoint2;
+using ConsoleApp11.ControlPoint.ControllPoint3.Hard;
 using ConsoleApp11.ControlPoint.encapsulation;
+using ConsoleApp11.ControlPoint.ParticLesson3;
 using ConsoleApp11.Practic.PracticLesson0;
 using ConsoleApp11.Practic.PracticLesson1;
+using ConsoleApp11.Practic.PracticLesson2;
 using System.Runtime.CompilerServices;
 
 namespace ConsoleApp11
@@ -10,7 +13,7 @@ namespace ConsoleApp11
     {
         static void Main(string[] args)
         {
-            ZadanieTransport();
+            ZadanieParticLesson3();
         }
         static private void Encapsulation()
         {
@@ -65,7 +68,7 @@ namespace ConsoleApp11
         {
             Taxi taxi = new Taxi("John", 1, 5);
             SportsCar sportsCar = new SportsCar("Alice", 0.4, 15);
-            Airplane airplane = new Airplane("Bob", 1,500);
+            Airplane airplane = new Airplane("Bob", 1, 500);
             Console.WriteLine();
             List<Transport> transports = new List<Transport>();
             transports.Add(taxi);
@@ -77,6 +80,44 @@ namespace ConsoleApp11
                 transport.FuelConsumption();
                 transport.TransportType();
                 transport.StartMoving();
+                Console.WriteLine();
+            }
+        }
+        static private void ZadanieExtremeTransport()
+        {
+            CarStats carStats = new CarStats(200, 1250, 1);
+            CarStats carStats1 = new CarStats(150, 900, 0.8f);
+            Console.WriteLine(carStats + carStats1);
+            Console.WriteLine(carStats - carStats1);
+            Console.WriteLine(carStats * carStats1);
+        }
+        static private void ZadanieParticLesson3()
+        {
+            Stone stone = new Stone("Гранит", 10, 0.5);
+            Stick stick = new Stick("Дуб", 5, 1);
+            Stone stone2 = new Stone("Гранит", 10, 0.5);
+            List<Item> items = new List<Item>();
+            items.Add(stone);
+            items.Add(stick);
+            Workbench craft = new Workbench();
+            Weapon weapon = craft.CreateWeapon(stone, stone2, stick);
+            weapon.SetElement(new Ice(10, 1) + new Fire(10, 2));
+            items.Add(weapon);
+
+            foreach (var item in items)
+            {
+                if (item is Stone s)
+                {
+                    s.GetDescription();
+                }
+                else if (item is Stick st)
+                {
+                    st.GetDescription();
+                }
+                else if (item is Weapon w)
+                {
+                    w.GetDescription();
+                }
                 Console.WriteLine();
             }
         }
