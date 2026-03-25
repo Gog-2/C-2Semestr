@@ -1,5 +1,8 @@
 ﻿using ConsoleApp11.ControlPoint.ControllPoint2;
 using ConsoleApp11.ControlPoint.ControllPoint3.Hard;
+using ConsoleApp11.ControlPoint.ControllPoint4;
+using ConsoleApp11.ControlPoint.ControllPoint4.classUnits;
+using ConsoleApp11.ControlPoint.ControllPoint4.Stats;
 using ConsoleApp11.ControlPoint.encapsulation;
 using ConsoleApp11.ControlPoint.ParticLesson3;
 using ConsoleApp11.Practic.PracticLesson0;
@@ -13,7 +16,7 @@ namespace ConsoleApp11
     {
         static void Main(string[] args)
         {
-            ZadanieParticLesson3();
+            ZadanieFinalFentazi();
         }
         static private void Encapsulation()
         {
@@ -120,6 +123,28 @@ namespace ConsoleApp11
                 }
                 Console.WriteLine();
             }
+        }
+        static private void ZadanieFinalFentazi()
+        {
+            List<Unit> leftTeam = new List<Unit>
+            {
+                new Warrior(new BaseUnit { Hp = 120, Damage = new Damage { PhysicDamage = 20 } }, 0.5f),
+                new Mage(new BaseUnit { Hp = 70, Damage = new Damage { MagicDamage = 30 } }, 0.4f),
+                new Healer(new BaseUnit { Hp = 90, Damage = new Damage { PhysicDamage = 5, MagicDamage = 10 } }, 0.3f, 0.3f)
+            };
+
+            List<Unit> rightTeam = new List<Unit>
+            {
+                new Warrior(new BaseUnit { Hp = 110, Damage = new Damage { PhysicDamage = 18 } }, 0.6f),
+                new Mage(new BaseUnit { Hp = 65, Damage = new Damage { MagicDamage = 35 } }, 0.3f),
+                new Healer(new BaseUnit { Hp = 95, Damage = new Damage { PhysicDamage = 8, MagicDamage = 8 } }, 0.4f, 0.2f)
+            };
+            FightSystem fight = new FightSystem(leftTeam, rightTeam);
+            fight.ManageFight(out int totalHits, out float totalDamage);
+
+            Console.WriteLine($"\n=== Fight Summary ===");
+            Console.WriteLine($"Total hits: {totalHits}");
+            Console.WriteLine($"Total potential damage: {totalDamage}");
         }
     }
 }
